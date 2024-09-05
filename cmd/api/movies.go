@@ -11,7 +11,10 @@ func (app *application) createMovieHandler(w http.ResponseWriter, r *http.Reques
 
 func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request) {
 
-	id, _ := app.readIDParam(r)
-
+	id, err := app.readIDParam(r)
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
 	fmt.Fprintf(w, "show the details of movie %d\n", id)
 }
