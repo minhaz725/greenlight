@@ -25,6 +25,11 @@ func (app *application) serverErrorResponse(w http.ResponseWriter, r *http.Reque
 	app.errorResponse(w, r, http.StatusInternalServerError, message)
 }
 
+func (app *application) badRequestErrorResponse(w http.ResponseWriter, r *http.Request) {
+	message := "Bad Request"
+	app.errorResponse(w, r, http.StatusBadRequest, message)
+}
+
 func (app *application) notFoundErrorResponse(w http.ResponseWriter, r *http.Request) {
 	message := "Not Found"
 	app.errorResponse(w, r, http.StatusNotFound, message)
